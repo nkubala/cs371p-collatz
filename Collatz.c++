@@ -32,30 +32,46 @@ std::pair<int, int> collatz_read (std::istream& r) {
 // ------------
 
 int collatz_eval (int i, int j) {
-    // <your code>
 
-
+    //check preconditions
+    assert(i > 0);
+    assert(i < 1000000);
+    assert(j > 0);
+    assert(j < 1000000);
 
     //simplest possible solution to collatz problem
-    int current = i;
+    int low, high;
+    if (i < j) {
+        low = i;
+        high = j;
+    }
+    else {
+        low = j;
+        high = i;
+    }
+    int current = low;
     int test, current_count;
     int max = -1;
+
     //iterate through all values between i and j
-    while (current <= j) {
-        current_count = 0;
+    while (current <= high) {
+        current_count = 1;
         test = current;
-        // std::cout << "test is " << test << std::endl;
 
         //while the test value isnt 1, collatz
         while (test > 1) {
             //test is even
             if (test % 2 == 0) {
                 test /= 2;
+                //make sure we didn't overflow
+                assert(test > 0);
                 current_count++;
             }
             //test is odd
             else {
                 test = 3 * test + 1;
+                //make sure we didn't overflow
+                assert(test > 0);
                 current_count++;
             }
         }
@@ -63,6 +79,8 @@ int collatz_eval (int i, int j) {
             max = current_count;
         current++;
     }
+
+    assert(max > 0);
     return max;
 }
 
