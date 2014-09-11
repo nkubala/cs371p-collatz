@@ -106,6 +106,22 @@ TEST(Collatz, solve_3) {
     collatz_solve(r, w);
     ASSERT_EQ("5 1 8\n17 71 113\n444 888 179\n80208 901099 470\n", w.str());}
 
+
+TEST(Collatz, compute_collatz) {
+    const int n = compute_collatz(10);
+    ASSERT_EQ(7, n);
+}
+TEST(Collatz, compute_collatz_2) {
+    const int n = compute_collatz(100);
+    ASSERT_EQ(26, n);
+}
+TEST(Collatz, compute_collatz_3) {
+    const int n = compute_collatz(1000);
+    ASSERT_EQ(112, n);
+}
+
+
+
 /*
 % ls -al /usr/include/gtest/
 ...
