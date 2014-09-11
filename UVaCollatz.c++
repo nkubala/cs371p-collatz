@@ -12,6 +12,28 @@
 #include <iostream> // endl, istream, ostream
 #include <utility>  // make_pair, pair
 
+int cache[999999] = {};
+
+
+int compute_collatz(int i) {
+    int test = i;
+    int current_count = 1;
+    //while the i value isnt 1, collatz
+    while (test > 1) {
+        //i is even
+        if (test % 2 == 0) {
+            test /= 2;
+            current_count++;
+        }
+        //i is odd
+        else {
+            test = 3 * test + 1;
+            current_count++;
+        }
+    }
+    cache[i] = current_count;
+    return current_count;
+}
 
 // ------------
 // collatz_read
@@ -31,9 +53,14 @@ std::pair<int, int> collatz_read (std::istream& r) {
 // ------------
 
 int collatz_eval (int i, int j) {
-    // <your code>
 
-   //simplest possible solution to collatz problem
+    //check preconditions
+    assert(i > 0);
+    assert(i < 1000000);
+    assert(j > 0);
+    assert(j < 1000000);
+
+    //simplest possible solution to collatz problem
     int low, high;
     if (i < j) {
         low = i;
@@ -44,31 +71,20 @@ int collatz_eval (int i, int j) {
         high = i;
     }
     int current = low;
-    int test, current_count;
+    int current_count;
     int max = -1;
+
     //iterate through all values between i and j
     while (current <= high) {
-        current_count = 1;
-        test = current;
-        // std::cout << "test is " << test << std::endl;
-
-        //while the test value isnt 1, collatz
-        while (test > 1) {
-            //test is even
-            if (test % 2 == 0) {
-                test /= 2;
-                current_count++;
-            }
-            //test is odd
-            else {
-                test = 3 * test + 1;
-                current_count++;
-            }
-        }
+        if (cache[current] != 0 ) current_count = cache[current];
+        //pass value to helper function to compute
+        else current_count = compute_collatz(current);
         if (current_count > max)
             max = current_count;
         current++;
     }
+
+    assert(max > 0);
     return max;
 }
 

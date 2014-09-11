@@ -14,11 +14,12 @@
 
 #include "Collatz.h"
 
+//global cache of collatz values (lazy cache)
+int cache[1000000] = {};
+
 // ------------
 // collatz_read
 // ------------
-
-int cache[1000000] = {};
 
 std::pair<int, int> collatz_read (std::istream& r) {
     int i;
@@ -57,6 +58,7 @@ int collatz_eval (int i, int j) {
 
     //iterate through all values between i and j
     while (current <= high) {
+        //check if value has already been computed
         if (cache[current] != 0 ) current_count = cache[current];
         //pass value to helper function to compute
         else current_count = compute_collatz(current);
@@ -90,6 +92,10 @@ void collatz_solve (std::istream& r, std::ostream& w) {
         const int v = collatz_eval(i, j);
         collatz_print(w, i, j, v);}}
 
+/*
+    compute_collatz
+    helper function to compute the collatz value for an individual number
+*/
 
 int compute_collatz(int i) {
     int test = i;
@@ -99,15 +105,11 @@ int compute_collatz(int i) {
         //i is even
         if (test % 2 == 0) {
             test /= 2;
-            //make sure we didn't overflow
-            // assert(i > 0);
             current_count++;
         }
         //i is odd
         else {
             test = 3 * test + 1;
-            //make sure we didn't overflow
-            // assert(i > 0);
             current_count++;
         }
     }
