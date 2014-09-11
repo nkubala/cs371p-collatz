@@ -33,25 +33,37 @@ TEST(Collatz, read) {
     ASSERT_EQ( 1, p.first);
     ASSERT_EQ(10, p.second);}
 
+TEST(Collatz, read_2) {
+    std::istringstream r("1990909 0\n");
+    const std::pair<int, int> p = collatz_read(r);
+    ASSERT_EQ(1990909, p.first);
+    ASSERT_EQ(0, p.second);}
+
+TEST(Collatz, read_3) {
+    std::istringstream r("0 0\n");
+    const std::pair<int, int> p = collatz_read(r);
+    ASSERT_EQ(0, p.first);
+    ASSERT_EQ(0, p.second);}
+
 // ----
 // eval
 // ----
 
 TEST(Collatz, eval_1) {
     const int v = collatz_eval(1, 10);
-    ASSERT_EQ(19, v);}
+    ASSERT_EQ(20, v);}
 
 TEST(Collatz, eval_2) {
     const int v = collatz_eval(100, 200);
-    ASSERT_EQ(124, v);}
+    ASSERT_EQ(125, v);}
 
 TEST(Collatz, eval_3) {
     const int v = collatz_eval(201, 210);
-    ASSERT_EQ(88, v);}
+    ASSERT_EQ(89, v);}
 
 TEST(Collatz, eval_4) {
     const int v = collatz_eval(900, 1000);
-    ASSERT_EQ(173, v);}
+    ASSERT_EQ(174, v);}
 
 // -----
 // print
@@ -62,6 +74,16 @@ TEST(Collatz, print) {
     collatz_print(w, 1, 10, 20);
     ASSERT_EQ("1 10 20\n", w.str());}
 
+TEST(Collatz, print_2) {
+    std::ostringstream w;
+    collatz_print(w, 1, 11011, 9999);
+    ASSERT_EQ("1 11011 9999\n", w.str());}
+
+TEST(Collatz, print_3) {
+    std::ostringstream w;
+    collatz_print(w, 0, 0, 0);
+    ASSERT_EQ("0 0 0\n", w.str());}
+
 // -----
 // solve
 // -----
@@ -70,7 +92,19 @@ TEST(Collatz, solve) {
     std::istringstream r("1 10\n100 200\n201 210\n900 1000\n");
     std::ostringstream w;
     collatz_solve(r, w);
-    ASSERT_EQ("1 10 1\n100 200 1\n201 210 1\n900 1000 1\n", w.str());}
+    ASSERT_EQ("1 10 20\n100 200 125\n201 210 89\n900 1000 174\n", w.str());}
+
+TEST(Collatz, solve_2) {
+    std::istringstream r("1 1\n500 300\n300 500\n69696 96969\n");
+    std::ostringstream w;
+    collatz_solve(r, w);
+    ASSERT_EQ("1 1 1\n500 300 144\n300 500 144\n69696 96969 351\n", w.str());}
+
+TEST(Collatz, solve_3) {
+    std::istringstream r("5 1\n17 71\n444 888\n80208 901099\n");
+    std::ostringstream w;
+    collatz_solve(r, w);
+    ASSERT_EQ("5 1 8\n17 71 113\n444 888 179\n80208 901099 470\n", w.str());}
 
 /*
 % ls -al /usr/include/gtest/
