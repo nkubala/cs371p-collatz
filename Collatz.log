@@ -1,0 +1,95 @@
+commit a823a08f36958e420ab4d25cccd25ee2aafc89d1
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Thu Sep 11 17:50:18 2014 -0500
+
+    cleaned/commented code: committing final files for submission
+
+commit 7ea0bf61f566a2bc8a2fd825dff193e8fc2784a0
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Thu Sep 11 17:47:54 2014 -0500
+
+    Doxygen html generation
+
+commit 614b379cd4759dd104212c683003841a5b3bb133
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Thu Sep 11 17:35:01 2014 -0500
+
+    ensure all functions are tested thoroughly: fixes #20
+
+commit 7a11d1d3333491ca72ba53fe4b1c41fd2930b174
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Thu Sep 11 16:44:05 2014 -0500
+
+    added tests for new helper function
+
+commit 2958f9b102ab614b6b21baae9fea5158a0cb3771
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Thu Sep 11 16:32:01 2014 -0500
+
+    fixed issue where cache was malfunctioning. fixes #19
+
+commit a3bb4c220994329415f5a37d5abb37df99bdba7a
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Thu Sep 11 15:52:36 2014 -0500
+
+    implemented very simple form of cache. fixed overflow error. fixes #16. fixes #13
+
+commit 937fe5f2ec46d4a80a1821de60f7e94c81a328a2
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Thu Sep 11 15:38:53 2014 -0500
+
+    implemented helper function to compute collatz value: fixes #18
+
+commit 7c5cdf0187630a7e45f0d73a48a8df925aa411b7
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Thu Sep 11 15:16:08 2014 -0500
+
+    fixed unit tests and wrote enough to average 3 per function: fixes #17
+
+commit 966243051154ad1a501fecf03f3e14e48c538d17
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Wed Sep 10 17:31:40 2014 -0500
+
+    added assertions to check preconditions/postconditions: fixes #11
+
+commit e094b844313f0a4928ed186ec448cb9c989ca686
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Wed Sep 10 17:25:11 2014 -0500
+
+    primitive solution passes tests: fixes #8, fixes #12
+
+commit 20e0c3fb389dd96b9f9db914049f180a749d298b
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Wed Sep 10 15:58:22 2014 -0500
+
+    combined Collatz and RunCollatz into UVaCollatz: fixes #14
+
+commit 211acacb7713d01382f52b8bea1f733340c85506
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Mon Sep 8 15:45:10 2014 -0500
+
+    implemented simplest possible solution to collatz problem: fixes #7
+
+commit dadd216962f6a45436e1328bf1ac8e754e3550ac
+Author: nkubala <kubala.nick@gmail.com>
+Date:   Mon Sep 8 11:52:15 2014 -0500
+
+    fixed unit tests to confirm failures: fixes #6
+
+commit aac1c6ebc053c634bf35fdafc5633aa664db8cda
+Author: nkubala <nkubala@utexas.edu>
+Date:   Sun Sep 7 13:11:49 2014 -0500
+
+    renamed files to match public repo
+
+commit 5765f1e292f9a981b2366f218dcec51e5f86b8aa
+Author: nkubala <nkubala@utexas.edu>
+Date:   Sun Sep 7 12:11:54 2014 -0500
+
+    initial commit of files from public repo
+
+commit 7ae3c0251f9fd8f51ceffe349efb6b29b9adee67
+Author: Nick Kubala <kubala.nick@gmail.com>
+Date:   Sun Sep 7 11:41:12 2014 -0500
+
+    Create README.md
