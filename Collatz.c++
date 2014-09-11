@@ -92,19 +92,20 @@ void collatz_solve (std::istream& r, std::ostream& w) {
 
 
 int compute_collatz(int i) {
+    int test = i;
     int current_count = 1;
     //while the i value isnt 1, collatz
-    while (i > 1) {
+    while (test > 1) {
         //i is even
-        if (i % 2 == 0) {
-            i /= 2;
+        if (test % 2 == 0) {
+            test /= 2;
             //make sure we didn't overflow
             // assert(i > 0);
             current_count++;
         }
         //i is odd
         else {
-            i = 3 * i + 1;
+            test = 3 * test + 1;
             //make sure we didn't overflow
             // assert(i > 0);
             current_count++;
