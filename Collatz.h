@@ -14,6 +14,9 @@
 #include <iostream> // istream, ostream
 #include <utility>  // pair
 
+
+// int cache[1000000] = {};
+
 // ------------
 // collatz_read
 // ------------

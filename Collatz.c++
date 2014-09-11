@@ -18,6 +18,8 @@
 // collatz_read
 // ------------
 
+int cache[1000000] = {};
+
 std::pair<int, int> collatz_read (std::istream& r) {
     int i;
     r >> i;
@@ -55,9 +57,9 @@ int collatz_eval (int i, int j) {
 
     //iterate through all values between i and j
     while (current <= high) {
-
+        if (cache[current] != 0 ) current_count = cache[current];
         //pass value to helper function to compute
-        current_count = compute_collatz(current);
+        else current_count = compute_collatz(current);
         if (current_count > max)
             max = current_count;
         current++;
@@ -108,5 +110,6 @@ int compute_collatz(int i) {
             current_count++;
         }
     }
+    cache[i] = current_count;
     return current_count;
 }
