@@ -50,31 +50,14 @@ int collatz_eval (int i, int j) {
         high = i;
     }
     int current = low;
-    int test, current_count;
+    int current_count;
     int max = -1;
 
     //iterate through all values between i and j
     while (current <= high) {
-        current_count = 1;
-        test = current;
 
-        //while the test value isnt 1, collatz
-        while (test > 1) {
-            //test is even
-            if (test % 2 == 0) {
-                test /= 2;
-                //make sure we didn't overflow
-                assert(test > 0);
-                current_count++;
-            }
-            //test is odd
-            else {
-                test = 3 * test + 1;
-                //make sure we didn't overflow
-                assert(test > 0);
-                current_count++;
-            }
-        }
+        //pass value to helper function to compute
+        current_count = compute_collatz(current);
         if (current_count > max)
             max = current_count;
         current++;
@@ -104,3 +87,26 @@ void collatz_solve (std::istream& r, std::ostream& w) {
         const int j = p.second;
         const int v = collatz_eval(i, j);
         collatz_print(w, i, j, v);}}
+
+
+int compute_collatz(int i) {
+    int current_count = 1;
+    //while the i value isnt 1, collatz
+    while (i > 1) {
+        //i is even
+        if (i % 2 == 0) {
+            i /= 2;
+            //make sure we didn't overflow
+            // assert(i > 0);
+            current_count++;
+        }
+        //i is odd
+        else {
+            i = 3 * i + 1;
+            //make sure we didn't overflow
+            // assert(i > 0);
+            current_count++;
+        }
+    }
+    return current_count;
+}

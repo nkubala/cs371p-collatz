@@ -59,4 +59,7 @@ void collatz_print (std::ostream& w, int i, int j, int v);
  */
 void collatz_solve (std::istream& r, std::ostream& w);
 
+
+int compute_collatz(int i);
+
 #endif // Collatz_h
